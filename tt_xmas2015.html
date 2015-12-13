@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>XMas 2015</title>
+
+		<style>
+			#main_wrapper
+			{
+				margin-left:auto;
+				margin-right:auto;
+				margin-top:5%;
+				margin-bottom:200px;
+				width:400px;
+				height:400px;
+				background-color:#000044;
+				position:relative;
+				overflow:hidden;
+			}	
+
+			#santa_wrapper
+			{
+				width:250px;
+				height:50px;
+				position:absolute;
+				z-index:0;
+				margin-top:50px;
+				margin-left:450px;
+				border: 0px solid #FF0000;
+			    	animation-name: movesanta;
+			    	animation-duration: 5s;
+			    	animation-delay: 2s;
+			    	animation-iteration-count: infinite;
+			    	animation-timing-function: linear;
+			    	-webkit-animation-name: movesanta;
+			    	-webkit-animation-duration: 5s;
+			    	-webkit-animation-delay: 2s;
+			    	-webkit-animation-iteration-count: infinite;
+			    	-webkit-animation-timing-function: linear;
+			}
+
+			@-webkit-keyframes movesanta {
+			    	from {margin-left:450px;}
+			    	to {margin-left:-350px;}
+			}
+
+			@keyframes movesanta {
+			    	from {margin-left:450px;}
+			    	to {margin-left:-350px;}
+			}
+
+			#sleigh_wrapper
+			{
+				width:100px;
+				height:50px;
+				background-size:contain;
+				background-image:url(http://1.bp.blogspot.com/-bDKyQ5V8WEY/Vb0rQRRL3MI/AAAAAAAAA4E/orFqgsS7Tcc/s1600/santa.png);
+				background-repeat:no-repeat;
+				background-position:left top;
+				position:relative;
+				float:left;
+				border: 0px solid #FF0000;
+			}
+
+			#ho_wrapper
+			{
+				position:relative;
+				float:left;
+				color:#000000;
+				font-weight:bold;
+				font-family:arial;
+				width:30px;
+				height:30px;
+				border: 0px solid #FF0000;
+			}
+
+			.ho1
+			{
+				margin-top:10px;
+				margin-left:20px;
+				font-size:25px;
+			}
+
+			.ho2
+			{
+				margin-top:10px;
+				margin-left:50px;
+				font-size:20px;
+			}
+
+			.ho3
+			{
+				margin-top:10px;
+				margin-left:80px;
+				font-size:16px;
+			}
+
+			.house
+			{
+				background-color:#000000;
+				width:50px;
+				height:300px;
+				border:0px solid #FFFFFF;
+				float:left;
+				margin-top:400px;
+				position:relative;
+				z-index:10;
+				transition:margin-top 2s;
+				-webkit-transition:margin-top 2s;
+			}
+
+			.snow_wrapper
+			{
+				width:600px;
+				height:600px;
+				position:absolute;
+				z-index:10;
+				margin-top:-200px;
+				border:0px solid #00FFFF;
+			}
+
+			.snowflake
+			{
+				position:absolute;
+				border-radius:20px;
+			}
+
+			#spinright
+			{
+			    margin-left:-300px;
+			    animation-name: rotateclockwise;
+			    animation-duration: 15s;
+			    animation-delay: 0s;
+			    animation-iteration-count: infinite;
+			    animation-timing-function: linear;
+			    -webkit-animation-name: rotateclockwise;
+			    -webkit-animation-duration: 15s;
+			    -webkit-animation-delay: 0s;
+			    -webkit-animation-iteration-count: infinite;
+			    -webkit-animation-timing-function: linear;
+			}
+
+			#spinleft
+			{
+			    margin-left:100px;
+			    animation-name: rotateanticlockwise;
+			    animation-duration: 15s;
+			    animation-delay: 0s;
+			    animation-iteration-count: infinite;
+			    animation-timing-function: linear;
+			    -webkit-animation-name: rotateanticlockwise;
+			    -webkit-animation-duration: 15s;
+			    -webkit-animation-delay: 0s;
+			    -webkit-animation-iteration-count: infinite;
+			    -webkit-animation-timing-function: linear;
+			}
+
+			@-webkit-keyframes rotateclockwise 
+			{
+			    from {-webkit-transform:rotate(0deg);}
+			    to {-webkit-transform:rotate(360deg);}
+			}
+
+			@keyframes rotateclockwise 
+			{
+			    from {transform:rotate(0deg);}
+			    to {transform:rotate(360deg);}
+			}
+
+			@-webkit-keyframes rotateanticlockwise 
+			{
+			    from {-webkit-transform:rotate(360deg);}
+			    to {-webkit-transform:rotate(0deg);}
+			}
+
+			@keyframes rotateanticlockwise 
+			{
+			    from {transform:rotate(360deg);}
+			    to {transform:rotate(0deg);}
+			}
+
+			#text_wrapper
+			{
+				cursor:pointer;
+				width:100%;
+				height:200px;
+				position:absolute;
+				top:500px;
+				text-align:center;
+				font-size:24px;
+				font-weight:bold;
+				color:#FFAA00;
+			}
+
+			#txtReplay
+			{
+				font-size:0.55em;
+			}
+		</style>
+
+		<script>
+			function generaterandomno(varmin,varmax)
+			{
+				return Math.floor((Math.random() * (varmax-varmin+1)) + varmin);
+			}
+
+			function snowflakes(varno)
+			{
+				var spinleft=document.getElementById("spinleft");
+				var spinright=document.getElementById("spinright");
+				var snow;
+				var size;
+				var i;
+
+				for (i=0;i<=varno;i++)
+				{
+					snow=document.createElement("div");
+					snow.className="snowflake";
+					size=generaterandomno(1,3);
+					snow.style.width=size+"px";
+					snow.style.height=size+"px";
+					snow.style.marginLeft=(generaterandomno(10,600))+"px";
+					snow.style.marginTop=(generaterandomno(10,600))+"px";
+					snow.style.backgroundColor="rgba(254,254,254,"+(generaterandomno(1,10)/10)+")";
+
+					spinleft.appendChild(snow);
+
+					snow=document.createElement("div");
+					snow.className="snowflake";
+					size=generaterandomno(1,3);
+					snow.style.width=size+"px";
+					snow.style.height=size+"px";
+					snow.style.marginLeft=(generaterandomno(10,600))+"px";
+					snow.style.marginTop=(generaterandomno(10,600))+"px";
+					snow.style.backgroundColor="rgba(254,254,254,"+(generaterandomno(1,10)/10)+")";
+
+					spinright.appendChild(snow);
+				}
+			}
+
+			function createwindows(varobj)
+			{
+				var table="";
+
+				table+="<table style=\"width:80%;margin-left:auto;margin-right:auto;margin-top:10px;\" cellspacing=\"5\">";
+				for (var i=0;i<generaterandomno(2,8);i++)
+				{
+					table+="<tr>";
+					table+="<td style=\"background-color:#"+(generaterandomno(0,2)==1?"000000":"FFFF00")+"\">&nbsp;</td>";
+					table+="<td style=\"background-color:#"+(generaterandomno(0,2)==1?"000000":"FFFF00")+"\">&nbsp;</td>";
+					table+="</tr>";					
+				}
+				table+="</table>";
+
+				varobj.innerHTML=table;
+			}
+
+			function raisehouses()
+			{
+				var houses=document.getElementsByClassName("house");
+
+				for (var i=0;i<houses.length;i++)
+				{
+					createwindows(houses[i]);
+					houses[i].style.marginTop=generaterandomno(100,200)+"px";
+				}
+			}
+
+			var santatimer=setTimeout(function() {hohoho(1);},1500);
+
+			function hohoho(varho)
+			{
+				var ho=document.getElementById("ho_wrapper");
+				ho.className="ho" + varho;
+				if (varho==4)
+				{
+					santatimer=setTimeout(function() {hohoho(1);},1000);
+					ho.innerHTML="";
+				}
+				else
+				{
+					santatimer=setTimeout(function() {hohoho(varho+1);},200);
+					ho.innerHTML="HO";
+				}
+			}
+
+			function reset()
+			{
+				var houses=document.getElementsByClassName("house");
+
+				for (var i=0;i<houses.length;i++)
+				{
+					houses[i].style.marginTop="400px";
+				}
+
+				document.getElementById("spinleft").innerHTML="";
+				document.getElementById("spinright").innerHTML="";
+
+				document.getElementById("txtReplay").innerHTML="(please wait...)";
+				setTimeout(function() {play();},4000);
+			}
+
+			function play()
+			{
+				snowflakes(100);
+				raisehouses();
+				document.getElementById("txtReplay").innerHTML="(click to replay)";
+			}
+		</script>
+	</head>
+	<body onload="play();" style="background-color:#FFFFFF;">
+		<div id="main_wrapper">
+			<div id="spinright" class="snow_wrapper">
+
+			</div>
+
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+
+			<div id="spinleft" class="snow_wrapper">
+			
+			</div>
+
+			<div id="santa_wrapper">
+				<div id="sleigh_wrapper">
+	
+				</div>	
+				<div id="ho_wrapper" class="ho1">
+					HO
+				</div>				
+			</div>
+		</div>
+		<div id="text_wrapper" onclick="reset();">
+			Merry Christmas and a Happy New year! <br />
+			T___T
+			<div id="txtReplay">
+				
+			</div>
+		</div>
+	</body>
+</html>
